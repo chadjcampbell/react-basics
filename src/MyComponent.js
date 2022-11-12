@@ -1,7 +1,7 @@
 import React from "react";
 
 function MyComponent(props) {
-  return <div>{props.title}</div>;
+  return <div className="border">{props.title}</div>;
 }
 
 export default MyComponent;
