@@ -3,14 +3,27 @@ import "./App.css";
 import MyComponent from "./MyComponent";
 import Clock from "./Clock";
 import Tasks from "./Tasks";
+import AddTask from "./Addtask";
+import React, { useState } from "react";
+
+const initialTodos = [
+  { id: 0, text: "Test element" },
+  { id: 1, text: "Another test element" },
+  { id: 2, text: "One more test element" },
+];
+let nextId = 3;
 
 function App() {
-  const taskArray = [
-    { title: "Cabbage", isFruit: false, id: 1 },
-    { title: "Garlic", isFruit: false, id: 2 },
-    { title: "Apple", isFruit: true, id: 3 },
-  ];
-
+  const [todos, setTodos] = useState(initialTodos);
+  function handleAddTodo(title) {
+    setTodos([
+      ...todos,
+      {
+        id: nextId++,
+        text: title,
+      },
+    ]);
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -18,7 +31,8 @@ function App() {
         <MyComponent title="This is a test prop" />
         <Clock />
         <div className="tasksContainer">
-          <Tasks taskArray={taskArray} />
+          <AddTask onAddTodo={handleAddTodo} />
+          <Tasks taskArray={todos} />
         </div>
       </header>
     </div>
