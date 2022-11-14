@@ -24,6 +24,9 @@ function App() {
       },
     ]);
   }
+  function handleDeleteTodo(id) {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -32,7 +35,7 @@ function App() {
         <Clock />
         <div className="tasksContainer">
           <AddTask onAddTodo={handleAddTodo} />
-          <Tasks taskArray={todos} />
+          <Tasks taskArray={todos} onDeleteTodo={handleDeleteTodo} />
         </div>
       </header>
     </div>

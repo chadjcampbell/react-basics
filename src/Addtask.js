@@ -5,8 +5,10 @@ export default function AddTodo({ onAddTodo }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onAddTodo(title);
-    setTitle("");
+    if (title !== "") {
+      onAddTodo(title);
+      setTitle("");
+    }
   };
   return (
     <form onSubmit={handleSubmit}>
